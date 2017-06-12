@@ -35,12 +35,12 @@ public abstract  class AbstractDAOManager implements DAOManager {
     protected Map<Class<? extends DataRecord>, DAO<? extends DataRecord>> map;
 
     @Override
-    public <T extends DAO<D>, D extends DataRecord> T getDaoFor(Class<D> dataRecordType) {
+    public synchronized <T extends DAO<D>, D extends DataRecord> T getDaoFor(Class<D> dataRecordType) {
         return (T) map.get(dataRecordType);
     }
 
     @Override
-    public <T extends DAO<D>, D extends DataRecord> void registerDaoFor(Class<D> dataRecordType, T dao) {
+    public synchronized  <T extends DAO<D>, D extends DataRecord> void registerDaoFor(Class<D> dataRecordType, T dao) {
         map.put(dataRecordType, dao);
     }
 }
