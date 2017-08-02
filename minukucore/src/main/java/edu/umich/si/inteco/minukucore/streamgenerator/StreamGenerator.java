@@ -106,7 +106,7 @@ public interface StreamGenerator<T extends DataRecord> {
      * sampling rate of the underlying DataRecord - unit is seconds
      * @return the sampling rate of the data underlying the stream
      */
-    public double getUpdateFrequency();
+    public long getUpdateFrequency();
 
     /**
      * Generate a state change event
